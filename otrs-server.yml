@@ -28,7 +28,6 @@
     with_items:
     - httpd
     - httpd-devel
-    - mod_perl
 
   - name: Chkconfig ON
     shell: /sbin/chkconfig httpd on
@@ -122,6 +121,7 @@
   - name: Installing PERL packages
     yum: state=latest name={{ item }}
     with_items:
+    - mod_perl
     - "perl(ExtUtils::MakeMaker)"
     - "perl(Sys::Syslog)"
     - "perl(Archive::Tar)"
