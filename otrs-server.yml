@@ -23,7 +23,7 @@
       key: /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
       state: present
 
-  - name: Installing Apache and Mod_Perl
+  - name: Installing Apache
     yum: state=latest name={{ item }}
     with_items:
     - httpd
@@ -98,11 +98,12 @@
   - name: Starting the database again
     service: name=mariadb state=started
 
-  - name: Installing Wget and bzip2
+  - name: Installing Wget and bzip2 and mod_perl
     yum: state=latest name={{ item }}
     with_items:
     - wget
     - bzip2
+    - mod_perl
 
   - name: Downloading OTRS
     get_url:
@@ -121,7 +122,6 @@
   - name: Installing PERL packages
     yum: state=latest name={{ item }}
     with_items:
-    - mod_perl
     - "perl(ExtUtils::MakeMaker)"
     - "perl(Sys::Syslog)"
     - "perl(Archive::Tar)"
