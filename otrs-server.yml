@@ -153,6 +153,7 @@
 
   - name: Copying file Config.pm
     copy:
+      remote_src=yes
       src: /opt/otrs/Kernel/Config.pm.dist
       dest: /opt/otrs/Kernel/Config.pm
 
@@ -167,6 +168,7 @@
 
   - name: Copying Daemon file
     copy:
+      remote_src=yes
       src: /opt/otrs/var/cron/otrs_daemon.dist
       dest: /opt/otrs/var/cron/otrs_daemon
 
